@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-burgundy-950: #2d0505;
+  --color-burgundy-900: #4a0808;
+  --color-burgundy-800: #720e0e;
+  --color-burgundy-700: #a81d1d;
+  --color-burgundy-600: #c92a2a;
+}
+
+@layer base {
+  body {
+    @apply bg-burgundy-950 text-gray-100 selection:bg-burgundy-600 selection:text-white;
+  }
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-burgundy-600 to-burgundy-700;
+}
+
+.fizz-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.fizz-animation::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 20%);
+  background-size: 20px 20px;
+  animation: fizz 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes fizz {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
